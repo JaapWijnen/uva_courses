@@ -32,8 +32,6 @@
 * jQuery (Mobile)
 * Ruby on Rails 4
 * GitHub
+* Bootstrap
 
 **Mockups are located in directory doc**
-
-**A few sentences of who will do what:**  
-*Jaap will focus on the search function while Robbert will focus more on list support of the 3 lists.*
