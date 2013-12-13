@@ -1,6 +1,8 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+notification :growl
+
 require 'active_support/inflector'
 
 guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' },

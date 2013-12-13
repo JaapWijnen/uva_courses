@@ -53,6 +53,7 @@ GEM
     execjs (2.0.2)
     ffi (1.9.3)
     formatador (0.2.4)
+    growl (1.0.3)
     guard (2.2.4)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -180,7 +181,7 @@ GEM
     turbolinks (2.0.0)
       coffee-rails
     tzinfo (0.3.38)
-    uglifier (2.3.2)
+    uglifier (2.3.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     websocket (1.0.7)
@@ -195,6 +196,7 @@ DEPENDENCIES
   capybara (= 2.1.0)
   childprocess (= 0.3.6)
   coffee-rails (~> 4.0.0)
+  growl
   guard-rspec (= 2.5.0)
   guard-spork (= 1.5.0)
   jbuilder (~> 1.2)
