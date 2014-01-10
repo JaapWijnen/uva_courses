@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140104144504) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "courses", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -75,6 +78,6 @@ ActiveRecord::Schema.define(version: 20140104144504) do
     t.string   "password_digest"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

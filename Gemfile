@@ -44,9 +44,9 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'nokogiri', '1.6.1'
 gem 'sanitize', '2.0.6'
 gem 'bootstrap-sass', '3.0.3.0'
+gem 'pg', '0.17.1'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.14.1'
   gem 'guard-rspec', '4.2.4'
   gem 'spork-rails', '4.0.0'
@@ -61,7 +61,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.17.1'
   gem 'rails_12factor', '0.0.2'
 end
 
