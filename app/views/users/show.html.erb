@@ -6,52 +6,33 @@
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#recently-viewed" data-toggle="tab"><span class="glyphicon glyphicon-eye-open"></span>Recently viewed</a></li>
-  <li><a href="#current-courses" data-toggle="tab"><span class="glyphicon glyphicon-check"></span> Current courses</a></li>
-  <li><a href="#shopping-cart" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
-  <li class="pull-right"><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+  <li class="<%= 'active' if params[:tab] == 'recent' || params[:tab] == nil %>">
+  	<a href="#recently-viewed" data-toggle="tab"><span class="glyphicon glyphicon-eye-open"></span>Recently viewed</a>
+  </li>
+  <li class="<%= 'active' if params[:tab] == 'current' %>">
+  	<a href="#current-courses" data-toggle="tab"><span class="glyphicon glyphicon-check"></span> Current courses</a>
+  </li>
+  <li class="<%= 'active' if params[:tab] == 'shop' %>">
+  	<a href="#shopping-cart" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping cart</a>
+  </li>
+  <li class="pull-right <%= 'active' if params[:tab] == 'settings' %>">
+  	<a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a>
+  </li>
 </ul>
 
 <!-- Tab panes -->
+<%= params %>
 <div class="tab-content">
-  <div class="tab-pane active" id="recently-viewed">
-	  Lijst met vakken laatst 10 bekeken vakken
-	  <ul>
-	  	<li>vak1</li>
-	  	<li>vak2</li>
-	  	<li>vak3</li>
-	  	<li>vak4</li>
-	  	<li>vak5</li>
-	  	<li>vak6</li>
-	  	<li>vak7</li>
-	  	<li>vak8</li>
-	  	<li>vak9</li>
-	  	<li>vak10</li>
-	  </ul>
+  <div class="tab-pane <%= 'active' if params[:tab] == 'recent' || params[:tab] == nil %>" id="recently-viewed">
+	  <%= render 'recently_viewed' %>
   </div>
-  <div class="tab-pane" id="current-courses">
-  	Lijst met vakken die je op dit moment neemt:
-  	<li>een vak</li>
-  	<li>ander vak</li>
-  	<li>nog een vak</li>
-  	<li>en nog een vak</li>
+  <div class="tab-pane <%= 'active' if params[:tab] == 'current' %>" id="current-courses">
+  	<%= render 'current_courses' %>
   </div>
-  <div class="tab-pane" id="shopping-cart">
-  	Lijst met vakken die je wilt gaan volgen
-  	<li>vak dat je wilt volgen</li>
-  	<li>nog een vak dat je wilt gaan volgen</li>
-  	<li>en nog een</li>
-  	<li>en hier nog een</li>
-  	<li>en een vijfde</li>
-
+  <div class="tab-pane <%= 'active' if params[:tab] == 'shop' %>" id="shopping-cart">
+  	<%= render 'shopping_cart' %>
   </div>
-  <div class="tab-pane" id="settings">
-  	Hier kun je later je email adres en wachtwoord ed veranderen!
-  	<hr/>
-  	Email:
-  	input
-  	<hr/>
-  	Wachtwoord:
-  	input
+  <div class="tab-pane <%= 'active' if params[:tab] == 'settings' %>" id="settings">
+  	<%= render 'settings' %>
   </div>
 </div>

@@ -12,15 +12,31 @@ describe "User pages" do
       visit users_path
     end
 
-    it { should have_title('All users') }
-    it { should have_content('All users') }
+    it { should_not have_title('All users') }
+    it { should_not have_content('All users') }
+
+    describe "as admin user" do
+      let(:admin) { FactoryGirl.create(:admin) }
+      before do
+        sign_in admin
+        visit users_path
+      end
+
+      it { should have_title('All users') }
+      it { should have_content('All users') }
+    end
 
     describe "pagination" do
+      let(:admin) { FactoryGirl.create(:admin) }
+      before do
+        sign_in admin
+        visit users_path
+      end
 
       before(:all) { 30.times { FactoryGirl.create(:user) } }
       after(:all)  { User.delete_all }
 
-      it { should have_selector('div.pagination') }
+      it { should have_selector('ul.pagination') }
 
       it "should list each user" do
         User.paginate(page: 1).each do |user|
@@ -53,7 +69,10 @@ describe "User pages" do
 
   describe "profile page" do
   	let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
+    before do
+      sign_in user
+      visit user_path(user)
+    end
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
@@ -113,12 +132,12 @@ describe "User pages" do
     let(:user) { FactoryGirl.create(:user) }
     before do
       sign_in user
-      visit edit_user_path(user)
+      visit user_path(user)
     end
 
     describe "page" do
       it { should have_content("Update your profile") }
-      it { should have_title("Edit user") }
+      it { should have_title(user.name) }
     end
 
     describe "with invalid information" do

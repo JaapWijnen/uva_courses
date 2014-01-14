@@ -56,9 +56,13 @@
 									<li class="dropdown">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
 		                <ul class="dropdown-menu">
-		                  <li><%= link_to "Users", users_path %></li>
 		                  <li>
-		                  	<%= link_to edit_user_path(current_user) do %>
+		                  	<%= link_to users_path do %>
+		                  		<span class="glyphicon glyphicon-user"></span> Users
+		                  	<% end %>
+		                  </li>
+		                  <li>
+		                  	<%= link_to user_path(current_user.id, tab: 'settings') do %>
 		                  		<span class="glyphicon glyphicon-cog"></span> Settings
 		                  	<% end %>
 		                  </li>
@@ -68,13 +72,24 @@
 	              <li class="dropdown">
 	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
 	                <ul class="dropdown-menu">
-	                  <li class="<%= 'active' if params[:controller] == 'users' && params[:action] == 'show' %>">
-	                  	<%= link_to current_user do %>
-	                  		<span class="glyphicon glyphicon-user"></span> Profile
-	                  		<% end %>
-	                  </li>
-	                  <li>
-	                  	<%= link_to edit_user_path(current_user) do %>
+	                	<li class="<%= 'active' if params[:tab] == 'recent' %>">
+	                		<%= link_to user_path(current_user.id, tab: 'recent') do %>
+  											<span class="glyphicon glyphicon-eye-open"></span> Recently viewed
+  										<% end %>
+	                	</li>
+  									<li class="<%= 'active' if params[:tab] == 'current' %>">
+  										<%= link_to user_path(current_user.id, tab: 'current') do %>
+  											<span class="glyphicon glyphicon-check"></span> Current courses
+  										<% end %>
+  									</li>
+  									<li class="<%= 'active' if params[:tab] == 'shop' %>">
+  										<%= link_to user_path(current_user.id, tab: 'shop') do %>
+  											<span class="glyphicon glyphicon-shopping-cart"></span> Shopping cart
+  										<% end %>
+  									</li>
+	                  <li class="divider"></li>
+	                  <li class="<%= 'active' if params[:tab] == 'settings' %>">
+	                  	<%= link_to user_path(current_user.id, tab: 'settings') do %>
 	                  		<span class="glyphicon glyphicon-cog"></span> Settings
 	                  	<% end %>
 	                  </li>
