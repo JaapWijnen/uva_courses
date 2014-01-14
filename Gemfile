@@ -45,9 +45,9 @@ gem 'nokogiri', '1.6.1'
 gem 'sanitize', '2.0.6'
 gem 'bootstrap-sass', '3.0.3.0'
 gem 'pg', '0.17.1'
-gem 'faker', '1.1.2'
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'faker', '1.2.0'
+gem 'will_paginate', '3.0.5'
+gem 'will_paginate-bootstrap', '1.0.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.14.1'
