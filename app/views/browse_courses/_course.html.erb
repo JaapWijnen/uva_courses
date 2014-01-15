@@ -1,0 +1,129 @@
+<% provide(:title, @course.name) %>
+
+<div class="page-header">
+	<h1><%= @course.name %></h1>
+</div>
+
+<table class="table">
+	<tr>
+		<th>Studiegidsnummer</th>
+		<td><%= @course.sgid %></td>
+	</tr>
+	<tr>
+		<th>Admin code</th>
+		<td><%= @course.acode %></td>
+	</tr>
+	<tr>
+		<th>Studielast</th>
+		<td><%= @course.ects %></td>
+	</tr>
+	<tr>
+		<th>Studiejaar</th>
+		<td><%= @course.year %></td>
+	</tr>
+	<tr>
+		<th>Periode(n)</th>
+		<td><%= @course.period %></td>
+	</tr>
+
+	<% if !@institutes.empty? %>
+		<tr>
+			<th rowspan="<%= @institutes.size %>">Onderwijsinstituut</th>
+			<td>
+				<%= link_to @institutes.first.name, controller: 'browse_courses', 
+																						action: 'show', 
+																						id: @institutes.first.id, 
+																						type: 'institutes' %>
+			</td>
+		</tr>
+	<% end %>
+	<% @institutes.drop(1).each do |i| %>
+		<tr>
+			<td>
+				<%= link_to i.name, controller: 'browse_courses', 
+														action: 'show', 
+														id: i.id, 
+														type: 'institutes' %>
+			</td>
+		</tr>
+	<% end %>
+
+	<% if !@staff.empty? %>
+		<tr>
+			<th rowspan="<%= @staff.size %>">Docent(en)</th>
+			<td>
+				<%= link_to @staff.first.name, 	controller: 'browse_courses', 
+																				action: 'show', 
+																				id: @staff.first.id, 
+																				type: 'staff' %>
+			</td>
+		</tr>
+	<% end %>
+	<% @staff.drop(1).each do |s| %>
+		<tr>
+			<td>
+				<%= link_to s.name, controller: 'browse_courses', 
+														action: 'show', 
+														id: s.id, 
+														type: 'staff' %>
+			</td>
+		</tr>
+	<% end %>
+
+	<% if !@programmes.empty? %>
+		<tr>
+			<th rowspan="<%= @programmes.size %>">Onderdeel van</th>
+			<td>
+				<%= link_to @programmes.first.name, controller: 'browse_courses', 
+																						action: 'show', 
+																						id: @programmes.first.id, 
+																						type: 'programmes' %>
+			</td>
+		</tr>
+	<% end %>
+	<% @programmes.drop(1).each do |p| %>
+		<tr>
+			<td>
+				<%= link_to p.name, controller: 'browse_courses', 
+														action: 'show', 
+														id: p.id, 
+														type: 'programmes' %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<% if !@course.goals.empty? %>
+	<h4>Leerdoelen</h4>
+	<%= @course.goals %>
+<% end %>
+
+<% if !@course.description.empty? %>
+	<h4>Inhoud</h4>
+	<%= @course.description %>
+<% end %>
+
+<% if !@course.timetable.empty? %>
+	<h4>Onderwijstijden</h4>
+	<%= @course.timetable %>
+<% end %>
+
+<% if !@course.lecture_material.empty? %>
+	<h4>Studiemateriaal</h4>
+	<%= @course.lecture_material %>
+<% end %>
+
+<% if !@course.participant_count.empty? %>
+	<h4>Aantal deelnemers</h4>
+	<%= @course.participant_count %>
+<% end %>
+
+<% if !@course.examination.empty? %>
+	<h4>Toetsvorm</h4>
+	<%= @course.examination %>
+<% end %>
+
+<% if !@course.specialities.empty? %>
+	<h4>Bijzonderheden</h4>
+	<%= @course.specialities %>
+<% end %>

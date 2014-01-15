@@ -41,8 +41,25 @@
             <ul class="nav navbar-nav">
               <li class="<%= 'active' if params[:action] == 'home' %>"><%= link_to "Home", root_path %></li>
 	          	<li class="<%= 'active' if params[:action] == 'help' %>"><%= link_to "Help", help_path %></li>
+							<li class="dropdown <%= 'active' if params[:controller] == 'browse_courses' %>">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="<%= 'active' if params[:controller] == 'browse_courses' && params[:type] == 'courses' %>">
+                  	<%= link_to 'Courses', controller: 'browse_courses', action: 'index', type: 'courses' %>
+                  </li>
+                  <li class="<%= 'active' if params[:controller] == 'browse_courses' && params[:type] == 'institutes' %>">
+                  	<%= link_to 'Institutes', controller: 'browse_courses', action: 'index', type: 'institutes' %>
+                  </li>
+                  <li class="<%= 'active' if params[:controller] == 'browse_courses' && params[:type] == 'programmes' %>">
+                  	<%= link_to 'Programmes', controller: 'browse_courses', action: 'index', type: 'programmes' %>
+                  </li>
+                  <li class="<%= 'active' if params[:controller] == 'browse_courses' && params[:type] == 'staff' %>">
+                  	<%= link_to 'Staff', controller: 'browse_courses', action: 'index', type: 'staff' %>
+                  </li>
+                </ul>
+              </li>
             </ul>
-            <form class="navbar-form navbar-left" role="form">
+            <form class="navbar-form navbar-left" role="search">
             	<div class="form-group">
               	<input type="text" placeholder="Search.." class="form-control">
             	</div>

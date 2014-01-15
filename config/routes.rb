@@ -1,6 +1,10 @@
 UvaCourses::Application.routes.draw do
   resources :users, only: [:new, :create, :show, :index, :update, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
+
+  type_regexp = Regexp.new([:courses, :institutes, :programmes, :staff].join("|"))
+  resources :browse_courses, only: [:show, :index], path: ':type', constraints: { type: type_regexp }
+
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

@@ -1,0 +1,13 @@
+<% provide(:title, @institute.name) %>
+
+<div class="page-header">
+	<h1>Institute: <%= @institute.name %></h1>
+</div>
+
+<h3>Courses given at institute: <%= @institute.name %>:</h3>
+
+<ul>
+	<% @institute.courses.all.each do |c| %>
+		<li><%= link_to c.name, controller: 'browse_courses', action: 'show', id: c.id, type: 'courses' %></li>
+	<% end %>
+</ul>

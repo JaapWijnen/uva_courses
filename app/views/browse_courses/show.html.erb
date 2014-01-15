@@ -1,0 +1,9 @@
+<% if params[:type] == 'courses' %>
+	<%= render 'course' %>
+<% elsif params[:type] == 'institutes' %>
+	<%= render 'institute' %>
+<% elsif params[:type] == 'programmes' %>
+	<%= render 'programme' %>
+<% elsif params[:type] == 'staff' %>
+	<%= render 'staff' %>
+<% end %>
