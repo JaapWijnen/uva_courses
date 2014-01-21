@@ -35,17 +35,17 @@
 * Bootstrap
 
 **Mockups**
-![mockup1](/doc/homepage.png)
+![mockup1](doc/homepage.png)
 The homepage
 
-![mockup2](/doc/menu.png)
+![mockup2](doc/menu.png)
 The menu
 
-![mockup3](/doc/dropdown.png)
+![mockup3](doc/dropdown.png)
 Dropdown mechanic
 
-![mockup4](/doc/menu-logged.png)
+![mockup4](doc/menu-logged.png)
 Menu for logged in users
 
-![mockup5](/doc/browse.png)
+![mockup5](doc/browse.png)
 UI for browsing through courses
