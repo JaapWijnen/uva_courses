@@ -35,17 +35,17 @@
 * Bootstrap
 
 **Mockups**
-![mockup1](doc/homepage.png)
+![mockup1](https://github.com/JaapWijnen/uva_courses/blob/master/doc/homepage.PNG)
 The homepage
 
-![mockup2](doc/menu.png)
+![mockup2](https://github.com/JaapWijnen/uva_courses/blob/master/doc/menu.png)
 The menu
 
-![mockup3](doc/dropdown.png)
+![mockup3](https://github.com/JaapWijnen/uva_courses/blob/master/doc/dropdown.png)
 Dropdown mechanic
 
-![mockup4](doc/menu-logged.png)
+![mockup4](https://github.com/JaapWijnen/uva_courses/blob/master/doc/menu-logged.png)
 Menu for logged in users
 
-![mockup5](doc/browse.png)
+![mockup5](https://github.com/JaapWijnen/uva_courses/blob/master/doc/browse.png)
 UI for browsing through courses
