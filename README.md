@@ -1,9 +1,9 @@
-# UVAcourses   
+# UvA Courses   
 **Summary:**   
 *implement a mobile web app with which users can shop for UvA courses.*   
 **Features list:**
 
-* get data from courses.xml.gz  
+* get data from courses.xml 
 * an UI designed for smartphone use with a width defined by device-width  
 * app must support courses from at least the Faculty of Science  
 * app must allow users to browse courses by department  
@@ -34,4 +34,7 @@
 * GitHub
 * Bootstrap
 
-**Mockups are located in directory doc**
+**Mockups**
+![mockup1](/doc)
+
+

@@ -2,6 +2,13 @@
 	<h1>UvA Courses</h1>
 </div>
 
-<p>
-  Homepage
-</p>
+<% if signed_in? %>
+	<div class="center jumbotron">
+		<h1>Welcome back!</h1>
+	</div>
+<% else %>
+	<div class="center jumbotron">
+		<h1>Welcome to UvA Courses</h1>
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	</div>
+<% end %>
