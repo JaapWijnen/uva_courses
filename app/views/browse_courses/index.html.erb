@@ -4,14 +4,15 @@
 	<h1>All <%= params[:type] %></h1>
 </div>
 
-<%= will_paginate renderer: BootstrapPagination::Rails %>
-
-<ul>
-  <% @browse_courses.each do |display| %>
-    <li>
-      <%= link_to display.name, controller: 'browse_courses', action: 'show', id: display.id, type: params[:type] %>
-    </li>
-  <% end %>
-</ul>
-
-<%= will_paginate renderer: BootstrapPagination::Rails %>
+	<%= form_tag({:controller => 'browse_courses', :action => 'index'}, :method => 'get', type: params[:type], id: 'search_form', class: '') do %>
+	  <div class="input-group col-sm-4 col-md-4">
+	    <%= text_field_tag :search, params[:search], class: 'form-control' %>
+	    <div class="input-group-btn">
+	    	<%= button_tag(name: nil, class: 'btn btn-primary') do %>
+	    		<span class="glyphicon glyphicon-search"></span>
+	    	<% end %>
+	    </div>
+	  </div>
+		
+		<div id="results"><%= render 'results' %></div>
+	<% end %>

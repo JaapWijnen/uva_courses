@@ -1,13 +1,13 @@
 class BrowseCoursesController < ApplicationController
 	def index
 		if params[:type] == 'courses'
-			@browse_courses = Course.paginate(page: params[:page]).order(:name)
+			@browse_courses = Course.search(params[:search]).paginate(page: params[:page]).order(:name)
 		elsif params[:type] == 'institutes'
-			@browse_courses = Institute.paginate(page: params[:page]).order(:name)
+			@browse_courses = Institute.search(params[:search]).paginate(page: params[:page]).order(:name)
 		elsif params[:type] == 'programmes'
-			@browse_courses = Programme.paginate(page: params[:page]).order(:name)
+			@browse_courses = Programme.search(params[:search]).paginate(page: params[:page]).order(:name)
 		elsif params[:type] == 'staff'
-			@browse_courses = Staff.paginate(page: params[:page]).order(:name)
+			@browse_courses = Staff.search(params[:search]).paginate(page: params[:page]).order(:name)
 		end
 	end
 

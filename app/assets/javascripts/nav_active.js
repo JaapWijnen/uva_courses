@@ -4,6 +4,3 @@ $(document).on("ready page:change", function() {
     $('ul.dropdown-menu li a:contains('+ $(this).text() +')').parent().addClass('active');
   });
 });
-
-
-

@@ -1,0 +1,11 @@
+<%= will_paginate renderer: BootstrapPagination::Rails %>
+
+<ul>
+  <% @browse_courses.each do |display| %>
+    <li>
+      <%= link_to display.name, controller: 'browse_courses', action: 'show', id: display.id, type: params[:type] %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate renderer: BootstrapPagination::Rails %>
