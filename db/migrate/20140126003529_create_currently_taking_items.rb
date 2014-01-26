@@ -10,6 +10,5 @@ class CreateCurrentlyTakingItems < ActiveRecord::Migration
     add_index :currently_taking_items, :user_id
     add_index :currently_taking_items, :course_id
     add_index :currently_taking_items, [:user_id, :course_id], unique: true
-
   end
 end

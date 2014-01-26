@@ -3,11 +3,16 @@
 <div class="page-header">
 	<h1><%= @course.name %></h1>
 </div>
+
 <% @user ||= current_user %>
 
-<% if signed_in? %>
-	<%= render 'cart_form' %>
-<% end %>
+<div class="list-buttons">
+	<% if signed_in? %>
+		<% if current_user.currently_taking_items.find_by(course_id: @course.id).nil? %>
+			<%= render 'cart_form' %>
+		<% end %>
+	<% end %>
+</div>
 
 <table class="table">
 	<tr>

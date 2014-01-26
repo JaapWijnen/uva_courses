@@ -19,7 +19,12 @@ class BrowseCoursesController < ApplicationController
 			@staff = @course.staffs.order(:name)
 			if signed_in?
 				recently_viewed
+				if !current_user.currently_taking_items.find_by(course_id: @course.id).nil?
+					flash.now[:success] = "You are already taking the course " + @course.name
+				end
 			end
+
+			
 		elsif params[:type] == 'institutes'
 			@institute = Institute.find_by(id: params[:id])
 		elsif params[:type] == 'programmes'

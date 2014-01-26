@@ -3,7 +3,7 @@
 	<ul>
 		<% @user ||= current_user %>
 		<% @user.shopping_cart_items.each do |item| %>
-			<li><%= link_to item.course.name, controller: 'browse_courses', action: 'show', id: item.course.id, type: 'courses' %></li>
+			<li><%= link_to item.course.name, controller: 'browse_courses', action: 'show', id: item.course.id, type: 'courses' %> | <%= link_to("delete", { controller: 'lists', action: 'destroy', listtype: 'shopping_cart_items', id: item.course.id}, method: 'delete', data: { confirm: "You sure?" }) %></li></li>
 		<% end %>
 	</ul>
 	<% if current_user.shopping_cart_items.count > 0 %>
