@@ -1,0 +1,7 @@
+<div id="cart_form">
+	<% if onList?(@course.id, @user.shopping_cart_items) %>
+		<%= render 'uncart' %>
+	<% else %>
+		<%= render 'cart' %>
+	<% end %>
+</div>

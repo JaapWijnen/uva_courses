@@ -1,9 +1,9 @@
 <div class="container">
 	Lijst met vakken die je op dit moment neemt:
 	<ul>
-		<li>een vak</li>
-		<li>ander vak</li>
-		<li>nog een vak</li>
-		<li>en nog een vak</li>
+		<% @user ||= current_user %>
+		<% @user.currently_taking_items.each do |item| %>
+			<li><%= link_to item.course.name, controller: 'browse_courses', action: 'show', id: item.course.id, type: 'courses' %> | <%= link_to("delete", { controller: 'lists', action: 'destroy', listtype: 'currently_taking_items', id: item.course.id}, method: 'delete', data: { confirm: "You sure?" }) %></li>
+		<% end %>
 	</ul>
 </div>

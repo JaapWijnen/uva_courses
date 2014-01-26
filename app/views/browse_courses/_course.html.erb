@@ -4,7 +4,16 @@
 	<h1><%= @course.name %></h1>
 </div>
 
-<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</button>
+<% @user ||= current_user %>
+
+<div class="list-buttons">
+	<% if signed_in? %>
+		<% if current_user.currently_taking_items.find_by(course_id: @course.id).nil? %>
+			<%= render 'cart_form' %>
+		<% end %>
+	<% end %>
+</div>
+
 <table class="table">
 	<tr>
 		<th>Studiegidsnummer</th>

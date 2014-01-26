@@ -1,10 +1,16 @@
 <div class="container">
 	Lijst met vakken die je wilt gaan volgen
 	<ul>
-		<li>vak dat je wilt volgen</li>
-		<li>nog een vak dat je wilt gaan volgen</li>
-		<li>en nog een</li>
-		<li>en hier nog een</li>
-		<li>en een vijfde</li>
+		<% @user ||= current_user %>
+		<% @user.shopping_cart_items.each do |item| %>
+			<li><%= link_to item.course.name, controller: 'browse_courses', action: 'show', id: item.course.id, type: 'courses' %> | <%= link_to("delete", { controller: 'lists', action: 'destroy', listtype: 'shopping_cart_items', id: item.course.id}, method: 'delete', data: { confirm: "You sure?" }) %></li></li>
+		<% end %>
 	</ul>
+	<% if current_user.shopping_cart_items.count > 0 %>
+		<%= form_tag({:controller => 'lists', :action => 'create', listtype: 'currently_taking_items'}, method: 'post') do %>
+		  <%= button_tag(name: nil, class: 'btn btn-primary') do %>
+				<span class="glyphicon glyphicon-check"></span> Check out
+		  <% end %>
+		<% end %>
+	<% end %>
 </div>
