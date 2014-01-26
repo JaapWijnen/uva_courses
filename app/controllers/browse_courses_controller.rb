@@ -17,6 +17,9 @@ class BrowseCoursesController < ApplicationController
 			@institutes = @course.institutes.order(:name)
 			@programmes = @course.programmes.order(:name)
 			@staff = @course.staffs.order(:name)
+			if signed_in?
+				recently_viewed
+			end
 		elsif params[:type] == 'institutes'
 			@institute = Institute.find_by(id: params[:id])
 		elsif params[:type] == 'programmes'
@@ -24,5 +27,15 @@ class BrowseCoursesController < ApplicationController
 		elsif params[:type] == 'staff'
 			@staff = Staff.find_by(id: params[:id])
 		end
+	end
+end
+
+def recently_viewed
+	if current_user.recently_viewed_items.find_by(course_id: @course.id).nil?
+		addToList!(@course.id, current_user.recently_viewed_items)
+	end
+	while current_user.recently_viewed_items.count > 10
+		course_id = current_user.recently_viewed_items.order(:created_at).first.course.id
+		removeFromList!(course_id, current_user.recently_viewed_items)
 	end
 end

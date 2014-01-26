@@ -1,0 +1,7 @@
+<%= form_tag({:controller => 'lists', :action => 'destroy', listtype: 'shopping_cart_items'}, method: 'delete') do %>
+  <div><%= hidden_field_tag :course_id, params[:id] %></div>
+
+  <%= button_tag(name: nil, class: 'btn btn-primary') do %>
+		<span class="glyphicon glyphicon-shopping-cart"></span> Remove from cart
+  <% end %>
+<% end %>

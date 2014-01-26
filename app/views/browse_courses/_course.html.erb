@@ -3,8 +3,12 @@
 <div class="page-header">
 	<h1><%= @course.name %></h1>
 </div>
+<% @user ||= current_user %>
 
-<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</button>
+<% if signed_in? %>
+	<%= render 'cart_form' %>
+<% end %>
+
 <table class="table">
 	<tr>
 		<th>Studiegidsnummer</th>

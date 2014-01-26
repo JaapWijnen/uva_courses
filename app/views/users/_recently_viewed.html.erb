@@ -1,15 +1,9 @@
 <div class="container">	
 	Lijst met vakken laatst 10 bekeken vakken
 	<ul>
-		<li>vak1</li>
-		<li>vak2</li>
-		<li>vak3</li>
-		<li>vak4</li>
-		<li>vak5</li>
-		<li>vak6</li>
-		<li>vak7</li>
-		<li>vak8</li>
-		<li>vak9</li>
-		<li>vak10</li>
+		<% @user ||= current_user %>
+		<% @user.recently_viewed_items.each do |item| %>
+			<li><%= link_to item.course.name, controller: 'browse_courses', action: 'show', id: item.course.id, type: 'courses' %></li>
+		<% end %>
 	</ul>
 </div>
