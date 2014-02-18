@@ -19,7 +19,7 @@ class BrowseCoursesController < ApplicationController
 			@staff = @course.staffs.order(:name)
 			if signed_in?
 				recently_viewed
-				if !current_user.currently_taking_items.find_by(course_id: @course.id).nil?
+				if !current_user.list_items.find_by(list_type: ListItem.currently_taking, course_id: @course.id).nil?
 					flash.now[:success] = "You are already taking the course " + @course.name
 				end
 			end
@@ -36,11 +36,11 @@ class BrowseCoursesController < ApplicationController
 end
 
 def recently_viewed
-	if current_user.recently_viewed_items.find_by(course_id: @course.id).nil?
-		addToList!(@course.id, current_user.recently_viewed_items)
+	if current_user.list_items.find_by(course_id: @course.id, list_type: ListItem.recently_viewed).nil?
+		addToList!(@course.id, ListItem.recently_viewed)
 	end
-	while current_user.recently_viewed_items.count > 10
-		course_id = current_user.recently_viewed_items.order(:created_at).first.course.id
-		removeFromList!(course_id, current_user.recently_viewed_items)
+	while current_user.list_items.where(list_type: ListItem.recently_viewed).count > 10
+		course_id = current_user.list_items.where(list_type: ListItem.recently_viewed).order(:created_at).first.course.id
+		removeFromList!(course_id, ListItem.recently_viewed)
 	end
 end

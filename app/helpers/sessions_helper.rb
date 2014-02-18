@@ -47,15 +47,15 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
 
-  def onList?(course_id, list)
-    list.find_by(course_id: course_id)
+  def onList?(course_id, type)
+    current_user.list_items.find_by(course_id: course_id, list_type: type)
   end
 
-  def addToList!(course_id, list)
-    list.create!(course_id: course_id, user_id: current_user.id)
+  def addToList!(course_id, type)
+    ListItem.create!(user_id: current_user.id, course_id: course_id, list_type: type)
   end
 
-  def removeFromList!(course_id, list)
-    list.find_by(course_id: course_id, user_id: current_user.id).destroy
+  def removeFromList!(course_id, type)
+    current_user.list_items.find_by(course_id: course_id, list_type: type).destroy
   end
 end

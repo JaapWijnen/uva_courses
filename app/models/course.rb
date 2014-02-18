@@ -2,10 +2,9 @@ class Course < ActiveRecord::Base
   has_and_belongs_to_many :institutes
   has_and_belongs_to_many :staffs
   has_and_belongs_to_many :programmes
-  
-  has_many :shopping_cart_items
-  has_many :currently_taking_items
-  has_many :recently_viewed_items
+
+  has_many :list_items
+  has_many :users, through: :list_items
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 

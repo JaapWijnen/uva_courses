@@ -2,7 +2,7 @@ UvaCourses::Application.routes.draw do
   resources :users, only: [:new, :create, :show, :index, :update, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
-  listtype_regexp = Regexp.new([:shopping_cart_items, :currently_taking_items].join("|"))
+  listtype_regexp = Regexp.new([:shopping_cart_items, :shopping_cart_items_noj, :currently_taking_items].join("|"))
   resources :lists, only: [:create, :destroy], path: ':listtype', constraints: { listtype: listtype_regexp }
 
   type_regexp = Regexp.new([:courses, :institutes, :programmes, :staff].join("|"))
@@ -15,6 +15,7 @@ UvaCourses::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
