@@ -1,0 +1,10 @@
+<% provide(:title, 'Search results') %>
+
+<div class="page-header">
+	<h1>Search results</h1>
+</div>
+<ul>
+	<% @search_result.each do |item| %>
+		<li><%= link_to item.name, controller: 'browse_courses', action: 'show', id: item.id, type: 'courses' %></li>
+	<% end %>
+</ul>
