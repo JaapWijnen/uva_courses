@@ -16,7 +16,7 @@ f.close
 
 courses = doc.xpath("/courses/course").to_a
 
-courses.each do |course|
+courses.first(300).each do |course|
 	acode = course.xpath("@acode").to_s
 	code = course.xpath("@code").to_s
 	sgid = course.xpath("@sgid").to_s
