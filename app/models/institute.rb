@@ -10,4 +10,8 @@ class Institute < ActiveRecord::Base
 			scoped
   	end
 	end
+
+	def self.searchable_language
+  	'dutch'
+	end
 end

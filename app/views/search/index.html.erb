@@ -3,8 +3,21 @@
 <div class="page-header">
 	<h1>Search results</h1>
 </div>
+
 <ul>
-	<% @search_result.each do |item| %>
+	<% @search_sgid.each do |item| %>
+		<li><%= item.sgid %> - <%= link_to item.name, controller: 'browse_courses', action: 'show', id: item.id, type: 'courses' %></li>
+	<% end %>
+</ul>
+<ul>
+	<% @search_staff.each do |item| %>
+		<% item.courses.each do |course| %>
+			<li><%= link_to item.name, controller: 'browse_courses', action: 'show', id: item.id, type: 'staff' %> - <%= link_to course.name, controller: 'browse_courses', action: 'show', id: course.id, type: 'courses' %></li>
+		<% end %>
+	<% end %>
+</ul>
+<ul>
+	<% @search_general.each do |item| %>
 		<li><%= link_to item.name, controller: 'browse_courses', action: 'show', id: item.id, type: 'courses' %></li>
 	<% end %>
 </ul>

@@ -64,7 +64,7 @@
             <div class="col-sm-3 col-md-3">
               <%= form_tag({controller: 'search', action: 'index'}, method: 'get', class: 'navbar-form') do %>
                 <div class="input-group">
-                  <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search' %>
+                  <%= text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Search' %>
                   <div class="input-group-btn">
                     <%= button_tag(name: nil, class: 'btn btn-primary') do %>
                       <span class="glyphicon glyphicon-search"></span>
