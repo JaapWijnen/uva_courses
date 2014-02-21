@@ -26,7 +26,7 @@ end
 def fill_lists
   user = User.first
   10.times do |n|
-    user.shopping_cart_items.create!(user_id: user.id, course_id: n+1)
-    user.currently_taking_items.create!(user_id: user.id, course_id: n+21)
+    user.list_items.create!(user_id: user.id, course_id: n+1, list_type: ListItem.shopping_cart)
+    user.list_items.create!(user_id: user.id, course_id: n+21, list_type: ListItem.currently_taking)
   end
 end

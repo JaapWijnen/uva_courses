@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-puts "START SEEDING"
+puts "START SEEDING (this might take a while)"
 
 f = File.open(Rails.root + "db/courses.xml")
 doc = Nokogiri::XML(f) do |config|
@@ -16,7 +16,7 @@ f.close
 
 courses = doc.xpath("/courses/course").to_a
 
-courses.first(100).each do |course|
+courses.each do |course|
 	acode = course.xpath("@acode").to_s
 	code = course.xpath("@code").to_s
 	sgid = course.xpath("@sgid").to_s
@@ -74,3 +74,4 @@ courses.first(100).each do |course|
 		newcourse.programmes << new_programme
 	end
 end
+puts "FINISHED SEEDING"

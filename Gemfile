@@ -48,6 +48,7 @@ gem 'pg', '0.17.1'
 gem 'faker', '1.2.0'
 gem 'will_paginate', '3.0.5'
 gem 'will_paginate-bootstrap', '1.0.0'
+gem 'textacular', '3.1.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.14.1'

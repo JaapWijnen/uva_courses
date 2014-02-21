@@ -2,7 +2,7 @@
 	Lijst met vakken die je op dit moment neemt:
 	<ul>
 		<% @user ||= current_user %>
-		<% @user.currently_taking_items.each do |item| %>
+		<% @user.list_items.where(list_type: ListItem.currently_taking).each do |item| %>
 			<li><%= link_to item.course.name, controller: 'browse_courses', action: 'show', id: item.course.id, type: 'courses' %> | <%= link_to("delete", { controller: 'lists', action: 'destroy', listtype: 'currently_taking_items', id: item.course.id}, method: 'delete', data: { confirm: "You sure?" }) %></li>
 		<% end %>
 	</ul>

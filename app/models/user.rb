@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-
-  has_many :shopping_cart_items
-  has_many :currently_taking_items
-  has_many :recently_viewed_items
+  
+  has_many :list_items
+  has_many :courses, through: :list_items
 
   before_save { email.downcase! }
   before_create :create_remember_token

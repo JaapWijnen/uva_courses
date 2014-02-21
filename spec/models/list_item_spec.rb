@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe CurrentlyTakingItems do
+describe ListItem do
   pending "add some examples to (or delete) #{__FILE__}"
 end

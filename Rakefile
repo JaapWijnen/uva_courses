@@ -4,3 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 
 UvaCourses::Application.load_tasks
+Rake::Task["db:structure:dump"].clear

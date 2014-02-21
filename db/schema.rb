@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126003529) do
+ActiveRecord::Schema.define(version: 20140216190012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,20 +50,23 @@ ActiveRecord::Schema.define(version: 20140126003529) do
     t.integer "staff_id"
   end
 
-  create_table "currently_taking_items", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "currently_taking_items", ["user_id", "course_id"], name: "index_currently_taking_items_on_user_id_and_course_id", using: :btree
-
   create_table "institutes", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "list_items", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.integer  "list_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "list_items", ["course_id"], name: "index_list_items_on_course_id", using: :btree
+  add_index "list_items", ["user_id", "course_id", "list_type"], name: "index_list_items_on_user_id_and_course_id_and_list_type", unique: true, using: :btree
+  add_index "list_items", ["user_id"], name: "index_list_items_on_user_id", using: :btree
 
   create_table "programmes", force: true do |t|
     t.string   "name"
@@ -71,24 +74,6 @@ ActiveRecord::Schema.define(version: 20140126003529) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "recently_viewed_items", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "recently_viewed_items", ["user_id", "course_id"], name: "index_recently_viewed_items_on_user_id_and_course_id", using: :btree
-
-  create_table "shopping_cart_items", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "shopping_cart_items", ["user_id", "course_id"], name: "index_shopping_cart_items_on_user_id_and_course_id", using: :btree
 
   create_table "staffs", force: true do |t|
     t.string   "name"

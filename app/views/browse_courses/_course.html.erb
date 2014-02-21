@@ -8,7 +8,7 @@
 
 <div class="list-buttons">
 	<% if signed_in? %>
-		<% if current_user.currently_taking_items.find_by(course_id: @course.id).nil? %>
+		<% if current_user.list_items.find_by(course_id: @course.id, list_type: ListItem.currently_taking).nil? %>
 			<%= render 'cart_form' %>
 		<% end %>
 	<% end %>

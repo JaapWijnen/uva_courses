@@ -6,5 +6,6 @@ class CreateStaffs < ActiveRecord::Migration
 
       t.timestamps
     end
+    execute "create index on staffs using gin(to_tsvector('dutch', name));"
   end
 end

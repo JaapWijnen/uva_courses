@@ -18,5 +18,9 @@ class CreateCourses < ActiveRecord::Migration
 
       t.timestamps
     end
+    execute "
+    create index on courses using gin(to_tsvector('dutch', sgid));
+    create index on courses using gin(to_tsvector('dutch', name));
+    create index on courses using gin(to_tsvector('dutch', description));"
   end
 end
