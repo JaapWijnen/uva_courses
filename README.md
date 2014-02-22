@@ -3,6 +3,30 @@
 *implement a mobile web app with which users can shop for UvA courses.*   
 **Features list:**
 
+**Setup:**
+clone repo
+    
+    git clone https://github.com/JaapWijnen/uva_courses.git JaapWijnen
+
+make sure all the gems are there
+
+    cd JaapWijnen
+    bundle
+
+Initialize and seed database (this can take a while)
+
+    rake db:setup
+
+To Create some dummy accounts use the following command
+
+    rake db:populate
+
+start server
+
+    rails s
+
+
+
 * get data from courses.xml 
 * an UI designed for smartphone use with a width defined by device-width  
 * app must support courses from at least the Faculty of Science  
@@ -36,22 +60,4 @@
 
 **Mockups**
 
-![mockup1](https://raw2.github.com/JaapWijnen/uva_courses/master/doc/homepage.PNG)
-
-The homepage
-
-![mockup2](https://raw2.github.com/JaapWijnen/uva_courses/master/doc/menu.PNG)
-
-The menu
-
-![mockup3](https://raw2.github.com/JaapWijnen/uva_courses/master/doc/dropdown.PNG)
-
-Dropdown mechanic
-
-![mockup4](https://raw2.github.com/JaapWijnen/uva_courses/master/doc/menu-logged.PNG)
-
-Menu for logged in users
-
-![mockup5](https://raw2.github.com/JaapWijnen/uva_courses/master/doc/browse.PNG)
-
-UI for browsing through courses
+For mockups check doc folder.
