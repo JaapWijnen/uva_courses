@@ -7,7 +7,7 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
   <li class="<%= 'active' if params[:tab] == 'recent' || params[:tab] == nil %>">
-  	<a href="#recently-viewed" data-toggle="tab"><span class="glyphicon glyphicon-eye-open"></span>Recently viewed</a>
+  	<a href="#recently-viewed" data-toggle="tab"><span class="glyphicon glyphicon-eye-open"></span> Recently viewed</a>
   </li>
   <li class="<%= 'active' if params[:tab] == 'current' %>">
   	<a href="#current-courses" data-toggle="tab"><span class="glyphicon glyphicon-check"></span> Current courses</a>
@@ -21,7 +21,7 @@
 </ul>
 
 <!-- Tab panes -->
-<div class="tab-content">
+<div class="tab-content user-tab-panes">
   <div class="tab-pane <%= 'active' if params[:tab] == 'recent' || params[:tab] == nil %>" id="recently-viewed">
 	  <%= render 'recently_viewed' %>
   </div>

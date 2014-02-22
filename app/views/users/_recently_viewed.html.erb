@@ -1,5 +1,4 @@
 <div class="container">	
-	Lijst met vakken laatst 10 bekeken vakken
 	<ul>
 		<% @user ||= current_user %>
 		<% @user.list_items.where(list_type: ListItem.recently_viewed).each do |item| %>

@@ -1,13 +1,13 @@
 <div class="container">
-	Lijst met vakken die je wilt gaan volgen
 	<ul>
 		<% @user ||= current_user %>
 		<% @user.list_items.where(list_type: ListItem.shopping_cart).each do |item| %>
 			<li><%= link_to item.course.name, controller: 'browse_courses', action: 'show', id: item.course.id, type: 'courses' %> | <%= link_to("delete", { controller: 'lists', action: 'destroy', listtype: 'shopping_cart_items_noj', id: item.course.id}, method: 'delete', data: { confirm: "You sure?" }) %></li></li>
 		<% end %>
 	</ul>
+	<br/>
 	<% if current_user.list_items.where(list_type: ListItem.shopping_cart).count > 0 %>
-		<%= form_tag({:controller => 'lists', :action => 'create', listtype: 'currently_taking_items'}, method: 'post') do %>
+		<%= form_tag({:controller => 'lists', :action => 'create', listtype: 'currently_taking_items'}, method: 'post', class: 'btn-padding') do %>
 		  <%= button_tag(name: nil, class: 'btn btn-primary') do %>
 				<span class="glyphicon glyphicon-check"></span> Check out
 		  <% end %>
