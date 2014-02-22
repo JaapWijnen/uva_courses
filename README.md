@@ -1,7 +1,7 @@
 # UvA Courses   
 **Summary:**   
 *implement a mobile web app with which users can shop for UvA courses.*   
-**Features list:**
+
 
 **Setup:**
 clone repo
@@ -26,6 +26,7 @@ start server
     rails s
 
 
+**Features list:**
 
 * get data from courses.xml 
 * an UI designed for smartphone use with a width defined by device-width  
