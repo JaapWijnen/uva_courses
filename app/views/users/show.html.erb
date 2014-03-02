@@ -6,32 +6,45 @@
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-  <li class="<%= 'active' if params[:tab] == 'recent' || params[:tab] == nil %>">
-  	<a href="#recently-viewed" data-toggle="tab"><span class="glyphicon glyphicon-eye-open"></span> Recently viewed</a>
+  <li class="<%= 'active' if params[:tab] == 
+                                            'recent' || params[:tab] == nil %>">
+  	<a href="#recently-viewed" data-toggle="tab">
+      <span class="glyphicon glyphicon-eye-open"></span> Recently viewed
+    </a>
   </li>
   <li class="<%= 'active' if params[:tab] == 'current' %>">
-  	<a href="#current-courses" data-toggle="tab"><span class="glyphicon glyphicon-check"></span> Current courses</a>
+  	<a href="#current-courses" data-toggle="tab">
+      <span class="glyphicon glyphicon-check"></span> Current courses
+    </a>
   </li>
   <li class="<%= 'active' if params[:tab] == 'shop' %>">
-  	<a href="#shopping-cart" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping cart</a>
+  	<a href="#shopping-cart" data-toggle="tab">
+      <span class="glyphicon glyphicon-shopping-cart"></span> Shopping cart
+    </a>
   </li>
   <li class="pull-right <%= 'active' if params[:tab] == 'settings' %>">
-  	<a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a>
+  	<a href="#settings" data-toggle="tab">
+      <span class="glyphicon glyphicon-cog"></span> Settings
+    </a>
   </li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content user-tab-panes">
-  <div class="tab-pane <%= 'active' if params[:tab] == 'recent' || params[:tab] == nil %>" id="recently-viewed">
+  <div class="tab-pane <%= 'active' if params[:tab] == 
+                      'recent' || params[:tab] == nil %>" id="recently-viewed">
 	  <%= render 'recently_viewed' %>
   </div>
-  <div class="tab-pane <%= 'active' if params[:tab] == 'current' %>" id="current-courses">
+  <div class="tab-pane <%= 'active' if params[:tab] == 
+                                            'current' %>" id="current-courses">
   	<%= render 'current_courses' %>
   </div>
-  <div class="tab-pane <%= 'active' if params[:tab] == 'shop' %>" id="shopping-cart">
+  <div class="tab-pane <%= 'active' if params[:tab] == 
+                                                  'shop' %>" id="shopping-cart">
   	<%= render 'shopping_cart' %>
   </div>
-  <div class="tab-pane <%= 'active' if params[:tab] == 'settings' %>" id="settings">
+  <div class="tab-pane <%= 'active' if params[:tab] == 
+                                                  'settings' %>" id="settings">
   	<%= render 'settings' %>
   </div>
 </div>

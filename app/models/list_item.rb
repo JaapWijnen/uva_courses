@@ -2,6 +2,7 @@ class ListItem < ActiveRecord::Base
 	belongs_to :course
 	belongs_to :user
 
+	# define constants associated with different lists
 	def self.recently_viewed
 		1
 	end

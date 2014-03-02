@@ -3,6 +3,7 @@ class Staff < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
+  # define search function and make sure it is not case sensitive
   def self.search(search)
   	if search
     	where('UPPER(name) LIKE UPPER(?)', "%#{search}%")
@@ -11,6 +12,7 @@ class Staff < ActiveRecord::Base
   	end
 	end
 
+  # set textacular gem search language to dutch
 	def self.searchable_language
   	'dutch'
 	end

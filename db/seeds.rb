@@ -14,9 +14,11 @@ doc = Nokogiri::XML(f) do |config|
 end
 f.close
 
+#put all courses in an array
 courses = doc.xpath("/courses/course").to_a
 
-courses.first(300).each do |course|
+#for each course gather the information and save it
+courses.each do |course|
 	acode = course.xpath("@acode").to_s
 	code = course.xpath("@code").to_s
 	sgid = course.xpath("@sgid").to_s
@@ -30,6 +32,7 @@ courses.first(300).each do |course|
 
 	programme = course.xpath("programmes/programme").to_a
 
+	#clean up entries
 	description = Sanitize.clean(course.xpath("description").text)
 	timetable = Sanitize.clean(course.xpath("timetable").text)
 	lecture_material = Sanitize.clean(course.xpath("lecture_material").text)
@@ -38,7 +41,7 @@ courses.first(300).each do |course|
 	specialities = Sanitize.clean(course.xpath("specialities").text)
 	examination = Sanitize.clean(course.xpath("examination").text)
 
-
+	#create new course
 	newcourse = Course.new do |c|
 		c.acode = acode
 		c.code = code
@@ -57,20 +60,26 @@ courses.first(300).each do |course|
 	end
 	newcourse.save
 
+	#create new institute if current one doesn't exist
 	new_institute = Institute.find_or_create_by_name(institute)
 	newcourse.institutes << new_institute
 
+	#iterate through staff connected to current course
 	staff.each do |i|
 		staff_name = i.xpath("name/text()").to_s
 		staff_url = i.xpath("url/text()").to_s
+		#create new staff if current one doesn't exist
 		new_staff = Staff.find_or_create_by_name_and_url(staff_name, staff_url)
 		newcourse.staffs << new_staff
 	end
 
+	#iterate through programmes connected to current course
 	programme.each do |i|
 		programme_name = i.xpath("name/text()").to_s
 		programme_url = i.xpath("url/text()").to_s
-		new_programme = Programme.find_or_create_by_name_and_url(programme_name, programme_url)
+		#create new programme if current one doesn't exist
+		new_programme = Programme.find_or_create_by_name_and_url(programme_name, 
+																																	programme_url)
 		newcourse.programmes << new_programme
 	end
 end

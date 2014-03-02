@@ -2,11 +2,22 @@ UvaCourses::Application.routes.draw do
   resources :users, only: [:new, :create, :show, :index, :update, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
-  listtype_regexp = Regexp.new([:shopping_cart_items, :shopping_cart_items_noj, :currently_taking_items].join("|"))
-  resources :lists, only: [:create, :destroy], path: ':listtype', constraints: { listtype: listtype_regexp }
+  #make lists accessible through same controller
+  listtype_regexp = Regexp.new([:shopping_cart_items, 
+                                :shopping_cart_items_noj, 
+                                :currently_taking_items].join("|"))
+  resources :lists, only: [:create, :destroy], 
+                    path: ':listtype', 
+                    constraints: { listtype: listtype_regexp }
 
-  type_regexp = Regexp.new([:courses, :institutes, :programmes, :staff].join("|"))
-  resources :browse_courses, only: [:show, :index], path: ':type', constraints: { type: type_regexp }
+  #make sure all browse views are accessible through same controller
+  type_regexp = Regexp.new([:courses, 
+                            :institutes, 
+                            :programmes, 
+                            :staff].join("|"))
+  resources :browse_courses, only: [:show, :index], 
+                             path: ':type', 
+                             constraints: { type: type_regexp }
 
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

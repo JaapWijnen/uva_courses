@@ -2,7 +2,8 @@
 <html>
 	<head>
 	  <title><%= full_title(yield(:title)) %></title>
-	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= stylesheet_link_tag    "application", 
+                                media: "all", "data-turbolinks-track" => true %>
 	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	  <%= csrf_meta_tags %>
 
@@ -29,7 +30,10 @@
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" 
+                    class="navbar-toggle" 
+                    data-toggle="collapse" 
+                    data-target=".navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -39,22 +43,41 @@
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="<%= 'active' if params[:action] == 'home' %>"><%= link_to "Home", root_path %></li>
-	          	<li class="<%= 'active' if params[:action] == 'help' %>"><%= link_to "Help", help_path %></li>
-							<li class="dropdown <%= 'active' if params[:controller] == 'browse_courses' %>">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+              <li class="<%= 'active' if params[:action] == 'home' %>">
+                <%= link_to "Home", root_path %>
+              </li>
+	          	<li class="<%= 'active' if params[:action] == 'help' %>">
+                <%= link_to "Help", help_path %>
+              </li>
+							<li class="dropdown <%= 
+                        'active' if params[:controller] == 'browse_courses' %>">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Browse <b class="caret"></b>
+                </a>
                 <ul class="dropdown-menu">
-                  <li class="<%= 'active' if params[:controller] == 'browse_courses' && params[:type] == 'courses' %>">
-                  	<%= link_to 'Courses', controller: 'browse_courses', action: 'index', type: 'courses' %>
+                  <li class="<%= 'active' if params[:controller] == 
+                          'browse_courses' && params[:type] == 'courses' %>">
+                  	<%= link_to 'Courses',  controller: 'browse_courses', 
+                                            action: 'index', 
+                                            type: 'courses' %>
                   </li>
-                  <li class="<%= 'active' if params[:controller] == 'browse_courses' && params[:type] == 'institutes' %>">
-                  	<%= link_to 'Institutes', controller: 'browse_courses', action: 'index', type: 'institutes' %>
+                  <li class="<%= 'active' if params[:controller] == 
+                          'browse_courses' && params[:type] == 'institutes' %>">
+                  	<%= link_to 'Institutes', controller: 'browse_courses', 
+                                              action: 'index', 
+                                              type: 'institutes' %>
                   </li>
-                  <li class="<%= 'active' if params[:controller] == 'browse_courses' && params[:type] == 'programmes' %>">
-                  	<%= link_to 'Programmes', controller: 'browse_courses', action: 'index', type: 'programmes' %>
+                  <li class="<%= 'active' if params[:controller] == 
+                          'browse_courses' && params[:type] == 'programmes' %>">
+                  	<%= link_to 'Programmes', controller: 'browse_courses', 
+                                              action: 'index', 
+                                              type: 'programmes' %>
                   </li>
-                  <li class="<%= 'active' if params[:controller] == 'browse_courses' && params[:type] == 'staff' %>">
-                  	<%= link_to 'Staff', controller: 'browse_courses', action: 'index', type: 'staff' %>
+                  <li class="<%= 'active' if params[:controller] == 
+                          'browse_courses' && params[:type] == 'staff' %>">
+                  	<%= link_to 'Staff',  controller: 'browse_courses', 
+                                          action: 'index', 
+                                          type: 'staff' %>
                   </li>
                   <li>
                 </ul>
@@ -62,9 +85,11 @@
             </ul>
             
             <div class="col-sm-3 col-md-3">
-              <%= form_tag({controller: 'search', action: 'index'}, method: 'get', class: 'navbar-form') do %>
+              <%= form_tag({ controller: 'search', action: 'index'}, 
+                             method: 'get', class: 'navbar-form') do %>
                 <div class="input-group">
-                  <%= text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Search' %>
+                  <%= text_field_tag :q, params[:q], class: 'form-control', 
+                                                        placeholder: 'Search' %>
                   <div class="input-group-btn">
                     <%= button_tag(name: nil, class: 'btn btn-primary') do %>
                       <span class="glyphicon glyphicon-search"></span>
@@ -77,10 +102,14 @@
             <ul class="nav navbar-nav navbar-right">
 							<% if signed_in? %>
 								<% if current_user.admin? %>
-									<li class="dropdown <%= 'active' if params[:controller] == 'users' && params[:action] == 'index' %>">
-		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+									<li class="dropdown <%= 'active' if params[:controller] == 
+                                      'users' && params[:action] == 'index' %>">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Admin <b class="caret"></b>
+                    </a>
 		                <ul class="dropdown-menu">
-		                  <li class="dropdown <%= 'active' if params[:controller] == 'users' && params[:action] == 'index' %>">
+		                  <li class="dropdown <%= 'active' if params[:controller] == 
+                                      'users' && params[:action] == 'index' %>">
 		                  	<%= link_to users_path do %>
 		                  		<span class="glyphicon glyphicon-user"></span> Users
 		                  	<% end %>
@@ -89,26 +118,33 @@
 		              </li>
 		            <% end %>
 	              <li class="dropdown <%= 'active' if !params[:tab].nil? %>">
-	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Account <b class="caret"></b>
+                  </a>
 	                <ul class="dropdown-menu">
 	                	<li class="<%= 'active' if params[:tab] == 'recent' %>">
-	                		<%= link_to user_path(current_user.id, tab: 'recent') do %>
+	                		<%= link_to user_path(current_user.id, 
+                                                            tab: 'recent') do %>
   											<span class="glyphicon glyphicon-eye-open"></span> Recently viewed
   										<% end %>
 	                	</li>
   									<li class="<%= 'active' if params[:tab] == 'current' %>">
-  										<%= link_to user_path(current_user.id, tab: 'current') do %>
-  											<span class="glyphicon glyphicon-check"></span> Current courses
+  										<%= link_to user_path(current_user.id, 
+                                                          tab: 'current') do %>
+  											<span class="glyphicon glyphicon-check"></span> 
+                        Current courses
   										<% end %>
   									</li>
   									<li class="<%= 'active' if params[:tab] == 'shop' %>">
   										<%= link_to user_path(current_user.id, tab: 'shop') do %>
-  											<span class="glyphicon glyphicon-shopping-cart"></span> Shopping cart
+  											<span class="glyphicon glyphicon-shopping-cart"></span> 
+                        Shopping cart
   										<% end %>
   									</li>
 	                  <li class="divider"></li>
 	                  <li class="<%= 'active' if params[:tab] == 'settings' %>">
-	                  	<%= link_to user_path(current_user.id, tab: 'settings') do %>
+	                  	<%= link_to user_path(current_user.id, 
+                                                          tab: 'settings') do %>
 	                  		<span class="glyphicon glyphicon-cog"></span> Settings
 	                  	<% end %>
 	                  </li>
@@ -121,7 +157,8 @@
 	                </ul>
 	              </li>
 	            <% else %>
-	            	<li class="<%= 'active' if params[:controller] == 'sessions' && params[:action] == 'new' %>">
+	            	<li class="<%= 'active' if params[:controller] == 
+                                    'sessions' && params[:action] == 'new' %>">
 	            		<%= link_to "Sign in", signin_path %>
 	            	</li>
 	            <% end %>
@@ -153,7 +190,9 @@
           <li class="muted">&middot;</li>
 					<li><%= link_to "About", about_path %></li>
           <li class="muted">&middot;</li>
-          <li><a href="https://github.com/jaapwijnen/uva_courses">Releases</a></li>
+          <li>
+            <a href="https://github.com/jaapwijnen/uva_courses">Releases</a>
+          </li>
         </ul>
       </div>
     </div>

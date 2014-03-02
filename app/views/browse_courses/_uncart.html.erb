@@ -1,4 +1,7 @@
-<%= form_tag({:controller => 'lists', :action => 'destroy', listtype: 'shopping_cart_items'}, method: 'delete') do %>
+<%= form_tag({:controller => 'lists', 
+							:action => 'destroy', 
+							listtype: 'shopping_cart_items'}, 
+							method: 'delete') do %>
   <div><%= hidden_field_tag :id, params[:id] %></div>
 
   <%= button_tag(name: nil, class: 'btn btn-danger') do %>
